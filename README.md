@@ -1,88 +1,87 @@
+
+
 # Pig Game
 
-A simple and fun two-player **Pig dice game** implemented with **HTML**, **CSS**, and **Vanilla JavaScript**. The game is designed for quick local play with a clean UI and responsive layout.
+A classic dice-based strategy game where players compete to reach 100 points first. Players roll dice to accumulate points, but must decide when to hold their points or risk losing them!
 
----
+## Game Rules
 
-## 🎲 Project Overview
+- Two players take turns rolling a dice
+- Each roll adds to the player's current turn score
+- Players can "hold" to add their current score to their total
+- If a player rolls a 1, they lose all points for that turn and play switches to the other player
+- First player to reach 100 points wins!
 
-Pig is a turn-based dice game where players race to reach a target score (default: **100**). On each turn, a player repeatedly rolls a die. If they roll a 1, their current turn score resets and the turn passes to the opponent. The player can choose to "Hold" to add the current turn score to their total score and pass the turn. First player to reach the target score wins.
+## Features
 
----
+- **Two-player gameplay**: Alternating turns between Player 1 and Player 2
+- **Score tracking**: Current turn score and total scores for both players
+- **Visual feedback**: Active player highlighting and winner announcement
+- **Dice animation**: Visual dice representation for each roll
+- **Game controls**: New game, roll dice, and hold buttons
+- **Responsive design**: Works on desktop and mobile devices
 
-## ✨ Features
+## Technologies Used
 
-* 🎯 Two-player gameplay (Player 1 vs Player 2).
-* 🎲 Roll dice action with dynamic dice image.
-* 📥 Hold action to bank current points.
-* 🔄 New game / Reset functionality.
-* ✅ Visual active-player indicator and winner state.
-* 🔧 Pure JavaScript logic, no external libraries.
+- **HTML5**: Semantic markup for game structure
+- **CSS3**: Styling and animations
+- **JavaScript**: Game logic and interactivity
 
----
-
-## 🧩 Tech Stack
-
-* **HTML5** – Semantic structure.
-* **CSS3** – Styling and responsive layout.
-* **JavaScript (ES6+)** – Game logic and DOM updates.
-
----
-
-## 📁 Project Structure
+## Project Structure
 
 ```
-pig-game/
-├─ index.html
-├─ style.css
-├─ script.js
-└─ images/
-   ├─ dice-1.png
-   ├─ dice-2.png
-   ├─ dice-3.png
-   ├─ dice-4.png
-   ├─ dice-5.png
-   └─ dice-6.png
+├── index.html      # Game interface
+├── style.css       # Game styling
+├── script.js       # Game logic
+├── images/         # Dice images
+│   ├── dice-1.png
+│   ├── dice-2.png
+│   ├── dice-3.png
+│   ├── dice-4.png
+│   ├── dice-5.png
+│   └── dice-6.png
+└── README.md       # This file
 ```
 
----
+## Game Controls
 
-## 🚀 Getting Started (Local)
+- **🎲 Roll dice**: Roll the dice to add points to your current turn
+- **📥 Hold**: Add your current turn score to your total score
+- **🔄 New game**: Reset the game to start over
+
+## How to Play
+
+1. Player 1 starts by clicking "Roll dice"
+2. Each roll (except 1) adds to the current turn score
+3. Click "Hold" to add current score to total and switch turns
+4. If you roll a 1, your turn ends and you lose all current points
+5. First player to reach 100 points wins!
+
+## Demo
+
+Play the game online at: https://pig-game-mo.netlify.app/
+
+## Installation
 
 1. Clone the repository:
+   ```bash
+   git clone https://github.com/mohamed-hossam1/Pig-Game.git
+   ```
 
-```bash
-git clone https://github.com/mohamed-hossam1/Pig-Game.git
-cd Pig-Game
-```
+2. Navigate to the project directory:
+   ```bash
+   cd Pig-Game
+   ```
 
-2. Open `index.html` in your browser, or run a local server:
+3. Open `index.html` in your browser
 
----
+## Code Structure
 
-## ▶️ How to Play
-
-* Click **Roll dice** to roll the die.
-* If you roll **1**, your current turn ends and your turn score resets.
-* Click **Hold** to add the current turn score to your total score and pass the turn.
-* First player to reach **100** points wins.
-* Click **New game** to reset the board.
-
----
-
-## 🔧 Important Code Notes
-
-* `script.js` handles the main game logic: rolling, holding, switching players, and checking for win state.
-* Dice images are stored in `images/` and swapped by updating the `src` attribute.
-* `GameOver` flag prevents further actions after a winner is declared.
+- **Game State Management**: Tracks scores, current player, and game status
+- **Event Handling**: Manages button clicks and game interactions
+- **DOM Manipulation**: Updates UI elements based on game state
+- **Turn Management**: Handles player switching and game flow
 
 ---
 
-## ♻️ Improvements & Ideas
-
-* Add customizable target score input.
-* Add sound effects and animations for rolls/win.
-* Add keyboard controls (e.g., R = roll, H = hold, N = new game).
-* Make game state persistent using `localStorage`.
-* Add AI opponent for single-player mode.
-
+Have fun playing! 🎲
