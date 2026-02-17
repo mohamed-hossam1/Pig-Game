@@ -1,108 +1,119 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;900&display=swap');
 
 * {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 html {
   font-size: 62.5%;
-  box-sizing: border-box;
 }
 
 body {
   font-family: 'Nunito', sans-serif;
   font-weight: 400;
-  height: 100vh;
+  min-height: 100vh;
   color: #333;
   background-image: linear-gradient(to top left, #753682 0%, #bf2e34 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
+  padding: 2rem;
 }
 
-main{
-  position: relative; 
+main {
+  position: relative;
   background-color: rgba(255, 255, 255, 0.373);
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(200px);
   display: flex;
-  width: 1000px;
+  flex-direction: row;
+  width: min(1000px, 100%);
   border-radius: 15px;
   overflow: hidden;
+  min-height: 600px;
 }
 
-.player{
+/* ===================== PLAYERS ===================== */
+.player {
   flex: 1;
   text-align: center;
-  padding: 90px;
+  padding: clamp(3rem, 8vw, 9rem) clamp(1.5rem, 4vw, 9rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.player--active{
+.player--active {
   background-color: rgba(255, 255, 255, 0.4);
 }
 
-.player--active .name{
+.player--active .name {
   font-weight: 900;
 }
 
-.player--winner{
-  background-color: rgb(47, 47, 47)
+.player--winner {
+  background-color: rgb(47, 47, 47);
 }
 
-.player--winner .name{
+.player--winner .name {
   font-weight: 900;
   color: rgb(199, 54, 95);
 }
 
-.name{
-  font-size: 4rem;
-  margin-bottom: 20px;
+/* ===================== NAME ===================== */
+.name {
+  font-size: clamp(2.4rem, 4vw, 4rem);
+  margin-bottom: clamp(1rem, 2vw, 2rem);
   font-weight: 300;
 }
 
-.score{
-  font-size: 8rem;
-  margin-bottom: 130px;
+/* ===================== SCORE ===================== */
+.score {
+  font-size: clamp(5rem, 10vw, 8rem);
+  margin-bottom: clamp(4rem, 10vw, 13rem);
   color: rgb(199, 54, 95);
+  line-height: 1;
 }
 
-.current{
+/* ===================== CURRENT ===================== */
+.current {
   background-color: rgb(199, 54, 95);
-  width: 70%;
+  width: min(70%, 18rem);
   margin: 0 auto;
-  padding: 20px;
+  padding: clamp(1rem, 2vw, 2rem);
   border-radius: 15px;
   color: rgb(211, 209, 209);
 }
 
-.current-label{
-  font-size: 1.7rem;
+.current-label {
+  font-size: clamp(1.2rem, 2vw, 1.7rem);
   margin-bottom: 5px;
 }
 
-
-.current-score{
-  font-size: 3.5rem;
+.current-score {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
 }
 
-.dice{
-  position:absolute;
+/* ===================== DICE ===================== */
+.dice {
+  position: absolute;
   left: 50%;
   top: 40%;
-  transform: translate(-50%,-50%);
-  height: 10rem;
+  transform: translate(-50%, -50%);
+  height: clamp(6rem, 10vw, 10rem);
   box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
   opacity: 0;
-
+  transition: opacity 0.3s;
 }
 
-.btn{
-  position:absolute;
-  padding: 10px 25px;
-  font-size: 1.8rem;
+/* ===================== BUTTONS ===================== */
+.btn {
+  position: absolute;
+  padding: clamp(0.6rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2.5rem);
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(10px);
@@ -111,22 +122,152 @@ main{
   box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);
   font-weight: 400;
   text-transform: uppercase;
+  font-family: 'Nunito', sans-serif;
+  white-space: nowrap;
+  transition: background-color 0.2s, transform 0.1s;
 }
 
-.btn--new{
+.btn:active {
+  transform: translate(-50%, -50%) scale(0.96);
+}
+
+.btn--new {
   left: 50%;
   top: 10%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
 
-.btn--roll{
+.btn--roll {
   left: 50%;
   top: 70%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
 
-.btn--hold{
+.btn--hold {
   left: 50%;
   top: 82%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
+}
+
+/* ===================== MOBILE (<600px) ===================== */
+@media (max-width: 600px) {
+  body {
+    padding: 1rem;
+    align-items: flex-start;
+  }
+
+  main {
+    flex-direction: column;
+    min-height: unset;
+    width: 100%;
+    border-radius: 12px;
+    padding-bottom: 14rem; /* space for buttons at bottom */
+  }
+
+  .player {
+    padding: 2.5rem 2rem;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .player--0 {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .name {
+    font-size: 2.4rem;
+    margin-bottom: 0;
+    min-width: 8rem;
+    text-align: left;
+  }
+
+  .score {
+    font-size: 5rem;
+    margin-bottom: 0;
+    flex: 1;
+    text-align: center;
+  }
+
+  .current {
+    width: auto;
+    min-width: 8rem;
+    padding: 1rem 1.5rem;
+    margin: 0;
+  }
+
+  .current-label {
+    font-size: 1.1rem;
+  }
+
+  .current-score {
+    font-size: 2.4rem;
+  }
+
+  /* Buttons fixed at bottom in a row */
+  .btn--new,
+  .btn--roll,
+  .btn--hold {
+    position: absolute;
+    transform: translateX(-50%);
+    font-size: 1.4rem;
+    padding: 0.8rem 1.8rem;
+  }
+
+  .btn--roll {
+    left: 25%;
+    bottom: 2.5rem;
+    top: unset;
+    transform: translateX(-50%);
+  }
+
+  .btn--new {
+    left: 50%;
+    bottom: 2.5rem;
+    top: unset;
+    transform: translateX(-50%);
+  }
+
+  .btn--hold {
+    left: 75%;
+    bottom: 2.5rem;
+    top: unset;
+    transform: translateX(-50%);
+  }
+
+  .dice {
+    /* sit between the two players */
+    position: relative;
+    display: block;
+    left: unset;
+    top: unset;
+    transform: none;
+    margin: 1.5rem auto;
+    height: 7rem;
+  }
+}
+
+/* ===================== TABLET (601–900px) ===================== */
+@media (min-width: 601px) and (max-width: 900px) {
+  main {
+    min-height: 500px;
+  }
+
+  .player {
+    padding: 5rem 3rem;
+  }
+
+  .score {
+    margin-bottom: 8rem;
+  }
+
+  .dice {
+    height: 8rem;
+    top: 38%;
+  }
+
+  .btn--roll  { top: 68%; }
+  .btn--hold  { top: 81%; }
 }
