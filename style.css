@@ -14,6 +14,7 @@ body {
   font-family: 'Nunito', sans-serif;
   font-weight: 400;
   min-height: 100vh;
+  min-height: 100dvh;
   color: #333;
   background-image: linear-gradient(to top left, #753682 0%, #bf2e34 100%);
   display: flex;
@@ -34,6 +35,7 @@ main {
   border-radius: 15px;
   overflow: hidden;
   min-height: 600px;
+  min-height: min(600px, 90dvh);
 }
 
 /* ===================== PLAYERS ===================== */
@@ -109,6 +111,22 @@ main {
   transition: opacity 0.3s;
 }
 
+.dice.is-rolling {
+  animation: dice-roll 240ms ease;
+}
+
+@keyframes dice-roll {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(12deg) scale(1.06);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+}
+
 /* ===================== BUTTONS ===================== */
 .btn {
   position: absolute;
@@ -129,6 +147,25 @@ main {
 
 .btn:active {
   transform: translate(-50%, -50%) scale(0.96);
+}
+
+.btn.is-pressed {
+  animation: btn-press 160ms ease;
+}
+
+@keyframes btn-press {
+  0% {
+    filter: brightness(1);
+    box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    filter: brightness(0.92);
+    box-shadow: 0 1.2rem 2.6rem rgba(0, 0, 0, 0.15);
+  }
+  100% {
+    filter: brightness(1);
+    box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);
+  }
 }
 
 .btn--new {
@@ -161,7 +198,7 @@ main {
     min-height: unset;
     width: 100%;
     border-radius: 12px;
-    padding-bottom: 14rem; /* space for buttons at bottom */
+    padding-bottom: 12rem; /* space for buttons at bottom */
   }
 
   .player {
@@ -216,6 +253,10 @@ main {
     padding: 0.8rem 1.8rem;
   }
 
+  .btn--new {
+    display: none;
+  }
+
   .btn--roll {
     left: 25%;
     bottom: 2.5rem;
@@ -246,6 +287,49 @@ main {
     transform: none;
     margin: 1.5rem auto;
     height: 7rem;
+  }
+}
+
+/* ===================== SMALL MOBILE (<420px) ===================== */
+@media (max-width: 420px) {
+  main {
+    padding-bottom: 11rem;
+  }
+
+  .player {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .name {
+    min-width: unset;
+    text-align: center;
+  }
+
+  .score {
+    font-size: 4.2rem;
+  }
+
+  .current {
+    width: 100%;
+    max-width: 18rem;
+  }
+
+  .btn--roll {
+    left: 50%;
+    bottom: 6.5rem;
+  }
+
+  .btn--hold {
+    left: 50%;
+    bottom: 2.5rem;
+  }
+
+  .dice {
+    height: 6rem;
+    margin: 1rem auto;
   }
 }
 

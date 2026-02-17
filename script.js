@@ -61,6 +61,10 @@ const roll = function () {
   const randomDice = Math.floor(Math.random() * 6);
   diceImage.src          = dices[randomDice];
   diceImage.style.opacity = 1;
+  diceImage.classList.remove("is-rolling");
+  // Restart animation on rapid rolls
+  void diceImage.offsetWidth;
+  diceImage.classList.add("is-rolling");
 
   if (randomDice === 0) {
     togglePlayer();
@@ -108,9 +112,23 @@ const reset = function () {
 };
 
 /* ─── event listeners ─── */
-document.querySelector(".btn--new").addEventListener("click",  reset);
-document.querySelector(".btn--roll").addEventListener("click", roll);
-document.querySelector(".btn--hold").addEventListener("click", holdScore);
+const newBtn  = document.querySelector(".btn--new");
+const rollBtn = document.querySelector(".btn--roll");
+const holdBtn = document.querySelector(".btn--hold");
+
+const pressFlash = function (btn) {
+  btn.classList.remove("is-pressed");
+  // Restart animation on rapid clicks
+  void btn.offsetWidth;
+  btn.classList.add("is-pressed");
+};
+
+newBtn.addEventListener("click", reset);
+rollBtn.addEventListener("click", function () {
+  pressFlash(rollBtn);
+  roll();
+});
+holdBtn.addEventListener("click", holdScore);
 
 /* Re-position dice on resize */
 window.addEventListener("resize", positionDice);
